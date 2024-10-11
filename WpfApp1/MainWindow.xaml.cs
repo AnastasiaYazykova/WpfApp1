@@ -24,5 +24,45 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
+
+        private void pic1_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("картина");
+        }
+
+        private void pic2_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("картина");
+        }
+
+        private void pic3_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("картина");
+        }
+
+        private void pic4_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("картина");
+        }
+
+        private void pic5_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("картина");
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("назад");
+        }
+
+        private void Front_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("вперед");
+        }
+
+        private void bottom1_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("что то");
+        }
     }
 }
