@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfApp1
 {
@@ -20,10 +21,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+      
 
         private void pic1_Click(object sender, RoutedEventArgs e)
         {
@@ -63,6 +61,42 @@ namespace WpfApp1
         private void bottom1_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("что то");
+        }
+
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            if (mePlayer.Source != null)
+            {
+                if (mePlayer.NaturalDuration.HasTimeSpan)
+                    lblStatus.Content = String.Format("{0} / {1}", mePlayer.Position.ToString(@"mm\:ss"), mePlayer.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
+            }
+            else
+                lblStatus.Content = "No file selected...";
+        }
+
+        private void butnPause_Click(object sender, RoutedEventArgs e)
+        {
+            mePlayer.Pause();
+        }
+
+        private void butnStop_Click(object sender, RoutedEventArgs e)
+        {
+            mePlayer.Stop();
+        }
+
+        private void butnPlay_Click(object sender, RoutedEventArgs e)
+        {
+            mePlayer.Play();
         }
     }
 }
